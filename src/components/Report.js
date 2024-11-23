@@ -4,6 +4,7 @@ import { getDatabase, ref, get } from "firebase/database";
 import app from "../firebaseConfig";
 import jsPDF from "jspdf";
 import "jspdf-autotable"; // Import the plugin
+import M from "materialize-css"; // Import Materialize
 
 const Report = () => {
     const [ledgerData, setLedgerData] = useState([]);
@@ -16,8 +17,10 @@ const Report = () => {
             if (snapshot.exists()) {
                 const data = Object.values(snapshot.val());
                 setLedgerData(data);
+                M.toast({ html: "Data fetched succesfully!", classes: "green rounded" });
             } else {
-                console.error("Error fetching data");
+                console.error("Error fetching data"); 
+                M.toast({ html: "Error fetching data!", classes: "red rounded" });
             }
         };
         fetchData();
@@ -43,6 +46,7 @@ const Report = () => {
 
         // Save the generated PDF
         doc.save("report.pdf");
+        M.toast({ html: "Report PDF generated succesfully!", classes: "green rounded" });
     };
 
     const generateExcel = () => {
@@ -51,6 +55,7 @@ const Report = () => {
         const wb = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(wb, ws, "Ledger Data");
         XLSX.writeFile(wb, "report.xlsx");
+        M.toast({ html: "Report SPREADSHEET generated succesfully!", classes: "green rounded" });
     };
 
     return (

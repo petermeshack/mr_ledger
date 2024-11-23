@@ -24,8 +24,10 @@ const ViewEntry = () => {
             });
 
             setLedger_dataArray(temporaryArray);
+            M.toast({ html: "fetched data sucessfully", classes: "green rounded" });
+
         } else {
-            M.toast({ html: "Error fetching data", classes: "red" });
+            M.toast({ html: "Error fetching data", classes: "red rounded" });
             console.log("Error fetching data");
         }
     };

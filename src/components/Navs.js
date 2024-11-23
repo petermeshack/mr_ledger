@@ -1,31 +1,5 @@
-/*import { useNavigate } from "react-router-dom";
-
-const Navs =() =>{
-    const navigate = useNavigate();
-    return(
-        
-        <div>
-            <div>
-                <button className="button1" onClick={()=>navigate("/")}>Dashboard</button>|
-                <button className="button1" onClick={()=>navigate("/add-entry")}>Entry</button>|
-                <button className="button1" onClick={()=>navigate("/ledger")}>Ledger</button>|
-                <button className="button1" onClick={()=>navigate("/view-entry")}>View Entries</button>|
-                <button className="button1" onClick={()=>navigate("/report")}>Report</button>|
-                <button className="button1" onClick={()=>navigate("/version")}>Version</button><br/>
-
-            </div>
-            {            
-            console.log("Navs")
-            }
-        </div>
-    );
-};
-export default Navs;
-*/
-
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom"; // Import Link here
 import M from "materialize-css";
 
 const Navs = () => {
@@ -33,8 +7,9 @@ const Navs = () => {
     const [isDarkMode, setIsDarkMode] = useState(true);
 
     useEffect(() => {
-        const elems = document.querySelectorAll(".carousel");
-        M.Carousel.init(elems, { fullWidth: true, indicators: true });
+        // Initialize MaterializeCSS sidenav
+        const sidenavElems = document.querySelectorAll(".sidenav");
+        M.Sidenav.init(sidenavElems, { edge: "left" });
     }, []);
 
     // Toggle between light and dark mode
@@ -47,39 +22,70 @@ const Navs = () => {
             {/* Navigation Bar */}
             <nav className="nav-extended">
                 <div className={`nav-wrapper ${isDarkMode ? "grey darken-4 white-text" : "grey lighten-1 black-text"}`}>
-                    <ul className="right ">
+                    {/* Sidenav Trigger */}
+                    <a
+                        href="#"
+                        data-target="mobile-menu"
+                        className="sidenav-trigger hide-on-large-only left"
+                    >
+                        <i className="material-icons">menu</i>
+                    </a>
+
+                    {/* Desktop Navigation */}
+                    <ul className="right hide-on-med-and-down">
                         <li>
-                            <button className="button-link" onClick={() => navigate("/")}>
+                            <button
+                                className="btn-flat white-text"
+                                onClick={() => navigate("/")}
+                            >
                                 Dashboard
                             </button>
                         </li>
                         <li>
-                            <button className="button-link" onClick={() => navigate("/add-entry")}>
+                            <button
+                                className="btn-flat white-text"
+                                onClick={() => navigate("/add-entry")}
+                            >
                                 Entry
                             </button>
                         </li>
                         <li>
-                            <button className="button-link" onClick={() => navigate("/ledger")}>
+                            <button
+                                className="btn-flat white-text"
+                                onClick={() => navigate("/ledger")}
+                            >
                                 Ledger
                             </button>
                         </li>
                         <li>
-                            <button className="button-link" onClick={() => navigate("/view-entry")}>
+                            <button
+                                className="btn-flat white-text"
+                                onClick={() => navigate("/view-entry")}
+                            >
                                 View Entries
                             </button>
                         </li>
                         <li>
-                            <button className="button-link" onClick={() => navigate("/report")}>
+                            <button
+                                className="btn-flat white-text"
+                                onClick={() => navigate("/report")}
+                            >
                                 Report
                             </button>
                         </li>
                         <li>
-                            <button className="button-link" onClick={() => navigate("/version")}>
+                            <button
+                                className="btn-flat white-text"
+                                onClick={() => navigate("/version")}
+                            >
                                 Version
                             </button>
                         </li>
                         <li>
-                            <button className="button-link" onClick={toggleTheme}>
+                            <button
+                                className="btn-flat white-text"
+                                onClick={toggleTheme}
+                            >
                                 {isDarkMode ? "Light Mode" : "Dark Mode"}
                             </button>
                         </li>
@@ -90,6 +96,45 @@ const Navs = () => {
                     <span className="nav-title">MR LEDGER</span>
                 </div>
             </nav>
+
+            {/* Sidenav for Mobile */}
+            <ul className="sidenav"  id="mobile-menu">
+                <li>
+                    <Link to="/" onClick={() => navigate("/")}>
+                        Dashboard
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/add-entry" onClick={() => navigate("/add-entry")}>
+                        Entry
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/ledger" onClick={() => navigate("/ledger")}>
+                        Ledger
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/view-entry" onClick={() => navigate("/view-entry")}>
+                        View Entries
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/report" onClick={() => navigate("/report")}>
+                        Report
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/version" onClick={() => navigate("/version")}>
+                        Version
+                    </Link>
+                </li>
+                <li>
+                    <Link to="#" onClick={toggleTheme}>
+                        {isDarkMode ? "Light Mode" : "Dark Mode"}
+                    </Link>
+                </li>
+            </ul>
         </div>
     );
 };

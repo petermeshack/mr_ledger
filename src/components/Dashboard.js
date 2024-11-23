@@ -12,7 +12,7 @@ const Dashboard = () => {
 
     // Show toast notifications
     const showToast = (message, type) => {
-        const classes = type === "success" || type === "info" ? "green darken-2" : "red darken-2";
+        const classes = type === "success" || type === "info" ? "green rounded" : "red rounded";
         M.toast({ html: message, classes });
     };
 

@@ -12,13 +12,6 @@ function App() {
         <Router basename="/mr_ledger">
             <Routes>
                 {
-                /*<Route path="/" element={<Dashboard />} />
-                <Route path="/add-entry" element={<AddEntry />} />
-                <Route path="/ledger" element={<Ledger />} />
-                <Route path="/view-entry" element={<ViewEntry />} />
-                <Route path="/report" element={<Report />} />
-                <Route pathA="/version" element={<Version />} />
-                */
                 }
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/dashboard" element={<Dashboard />} />

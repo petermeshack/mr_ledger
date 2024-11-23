@@ -18,7 +18,7 @@ const AddEntry = () => {
             !inputDate_data ||
             !inputAmount_data
         ) {
-            M.toast({ html: "Please fill all fields!", classes: "red" });
+            M.toast({ html: "Please fill all fields!", classes: "red rounded" });
             return;
         }
 
@@ -35,7 +35,7 @@ const AddEntry = () => {
 
             M.toast({
                 html: "Ledger information saved successfully!",
-                classes: "green",
+                classes: "green rounded",
             });
 
             // Clear inputs on success
@@ -46,7 +46,7 @@ const AddEntry = () => {
         } catch (error) {
             M.toast({
                 html: "Failed to save ledger information!",
-                classes: "red",
+                classes: "red rounded",
             });
         }
     };
