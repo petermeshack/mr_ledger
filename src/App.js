@@ -9,7 +9,7 @@ import Version from "./components/Version";
 function App() {
   return (
     <div className="App">
-        <Router>
+        <Router basename="/mr_ledger">
             <Routes>
                 {
                 /*<Route path="/" element={<Dashboard />} />
